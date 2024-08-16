@@ -17,7 +17,7 @@ def enviar_emaail(dados,usuario,pdf_buffer,lista):
 
     sender_email = "juanpablozonho@gmail.com"
     receiver_email = "juanzsalca@outlook.com"
-    password = st.secrets["firebase"]["pass"]
+    password = st.secrets["firebase"]["senha_email"]
 
 
     msg = MIMEMultipart("alternative")

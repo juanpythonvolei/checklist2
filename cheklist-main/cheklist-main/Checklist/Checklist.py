@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from teste import enviar_emaail,enviar_emaail2
+from teste import enviar_email,enviar_email2
 from fpdf import FPDF
 from io import BytesIO
 from datetime import datetime

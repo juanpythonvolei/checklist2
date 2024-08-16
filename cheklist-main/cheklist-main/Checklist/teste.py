@@ -6,7 +6,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 import streamlit as st
 
-password2 = st.secrets["firebase"]["senha_email"]
+
 
 def enviar_email(dados, usuario, pdf_buffer, lista):
     df = pd.DataFrame(dados)
@@ -14,7 +14,7 @@ def enviar_email(dados, usuario, pdf_buffer, lista):
 
     sender_email = "juanpablozonho@gmail.com"
     receiver_email = "juanzsalca@outlook.com"
-    password = password2
+    password = st.secrets["firebase"]["senha_email"]
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = "Tabela de Dados"

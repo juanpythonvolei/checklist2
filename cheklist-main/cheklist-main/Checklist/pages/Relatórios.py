@@ -8,7 +8,7 @@ from Adicionar_Imagens import exibir_imagem
 
 
 opcoes = ['Dados Gerais', 'Assitência', 'Ver Checklists']
-GOOGLE_API_KEY = 'AIzaSyB2uaEtcP8T2_Fy6bhmXC3828qysZEqjNQ'
+GOOGLE_API_KEY = st.secrest['firebase']['GOOGLE_API_KEY']
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 chat = model.start_chat(history=[])

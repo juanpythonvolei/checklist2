@@ -870,7 +870,7 @@ if seletor == 'Novo Checklist':
                                                             with col1:
                                                                         botao_email = st.button('Enviar Cheklist')
                                                                         if botao_email:
-                                                                                        enviar_emaail(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)       
+                                                                                        enviar_email(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)       
                                                                                         #enviar_emaail2(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)        
                                                                                         estatistica(nao=st.session_state.lista_problemas,sim=st.session_state.lista_qtd,usuario=usuario,data=data_hora_formatada,imagem=st.session_state.lista_imagens)        
                                                                                         st.session_state.lista_qtd = []

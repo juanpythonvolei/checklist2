@@ -1,31 +1,25 @@
+import pandas as pd
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-import pandas as pd
 import streamlit as st
 
 password2 = st.secrets["firebase"]["senha_email"]
-def enviar_emaail(dados,usuario,pdf_buffer,lista):
 
-
+def enviar_email(dados, usuario, pdf_buffer, lista):
     df = pd.DataFrame(dados)
-
-
     tabela_html = df.to_html(index=False)
-
 
     sender_email = "juanpablozonho@gmail.com"
     receiver_email = "juanzsalca@outlook.com"
     password = password2
 
-
     msg = MIMEMultipart("alternative")
     msg["Subject"] = "Tabela de Dados"
     msg["From"] = sender_email
     msg["To"] = receiver_email
-
 
     html = f"""
     <html>
@@ -53,25 +47,19 @@ def enviar_emaail(dados,usuario,pdf_buffer,lista):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
-def enviar_emaail2(dados,usuario,pdf_buffer,lista):
 
-
+def enviar_email2(dados, usuario, pdf_buffer, lista):
     df = pd.DataFrame(dados)
-
-
     tabela_html = df.to_html(index=False)
-
 
     sender_email = "juanpablozonho@gmail.com"
     receiver_email = "Jonatan.lima@thule.com"
     password = st.secrets["firebase"]["password"]
 
-
     msg = MIMEMultipart("alternative")
     msg["Subject"] = "Tabela de Dados"
     msg["From"] = sender_email
     msg["To"] = receiver_email
-
 
     html = f"""
     <html>
@@ -83,7 +71,6 @@ def enviar_emaail2(dados,usuario,pdf_buffer,lista):
     </body>
     </html>
     """
-    
 
     part = MIMEText(html, "html")
     msg.attach(part)
@@ -96,6 +83,3 @@ def enviar_emaail2(dados,usuario,pdf_buffer,lista):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
-
-
-

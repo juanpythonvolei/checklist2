@@ -6,6 +6,7 @@ from email import encoders
 import pandas as pd
 import streamlit as st
 
+password2 = st.secrets["firebase"]["senha_email"]
 def enviar_emaail(dados,usuario,pdf_buffer,lista):
 
 
@@ -17,7 +18,7 @@ def enviar_emaail(dados,usuario,pdf_buffer,lista):
 
     sender_email = "juanpablozonho@gmail.com"
     receiver_email = "juanzsalca@outlook.com"
-    password = st.secrets["senha_email"]
+    password = password2
 
 
     msg = MIMEMultipart("alternative")

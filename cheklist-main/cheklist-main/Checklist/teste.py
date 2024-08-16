@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import pandas as pd
-
+import streamlit as st
 
 def enviar_emaail(dados,usuario,pdf_buffer,lista):
 

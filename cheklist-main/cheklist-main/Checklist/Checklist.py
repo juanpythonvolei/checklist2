@@ -882,21 +882,23 @@ if seletor == 'Novo Checklist':
                                                                                         baixar()
                                                                                         with col2:
                                                                                                     @st.cache_data
-                                                                                                    def convert_df(df):    
-                                                                                                      output = BytesIO()
-                                                                                                      #writer = pd.ExcelWriter(output, engine='openpyxl')
-                                                                                                      arquivo = df.to_excel('Checklist.xlsx',index=False)
-                                                    
+                                                                                                    def convert_df_to_excel(df):
+                                                                                                        output = BytesIO()
+                                                                                                        writer = pd.ExcelWriter(output, engine='openpyxl')
+                                                                                                        df.to_excel(writer, index=False, sheet_name='Sheet1')
+                                                                                                        writer.save()
+                                                                                                        processed_data = output.getvalue()
+                                                                                                        return processed_data
                                                                                                     with st.popover("📂"):               
-                                                                                                                            arquivo = convert_df(dict_resposta)
-                                                                                                                            
-                                                                                                                            download = st.download_button(
+                                                                                                                                arquivo_excel = convert_df_to_excel(dict_resposta)
+                                                                                                                                
+                                                                                                                                download = st.download_button(
                                                                                                                                 label="Faça o download do checklist no formato Excel",
                                                                                                                                 data=arquivo,
                                                                                                                                 file_name="checklist.xlsx",
                                                                                                                                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                                                                                                                                                     )
-                                                                                                                            if download:
+                                                                                                                                if download:
                                                                                                                                         st.success('Arquivo csv baixado com sucesso')
                                                                             
 

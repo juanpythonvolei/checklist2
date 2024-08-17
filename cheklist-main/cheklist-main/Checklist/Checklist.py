@@ -901,7 +901,8 @@ if seletor == 'Novo Checklist':
                                                                                                                                                       )
                                                                                                                                   if download:
                                                                                                                                           st.success('Arquivo csv baixado com sucesso')
-                                                                            
+                                                                        else:
+                                                                          st.info(f'{usuario}, preencha todos os campos para enviar o relatório')
 
 elif seletor == 'Excluir Checklist':
             

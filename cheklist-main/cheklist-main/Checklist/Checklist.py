@@ -883,10 +883,12 @@ if seletor == 'Novo Checklist':
                                                                                         with col2:
                                                                                                     @st.cache_data
                                                                                                     def convert_df(df):    
-                                                                                                  
-                                                                                                                    data_str = {key: str(value) for key, value in df.items()}        
-                                                                                                                    df = pd.DataFrame(df)    
-                                                                                                                    return df.to_csv(index=False)
+                                                                                                      output = BytesIO()
+                                                                                                      writer = pd.ExcelWriter(output, engine='openpyxl')
+                                                                                                      df.to_excel(writer, index=False, sheet_name='Sheet1')
+                                                                                                      writer.save()
+                                                                                                      processed_data = output.getvalue()
+                                                                                                      return processed_data
                                                                                                     with st.popover("📂"):               
                                                                                                                             arquivo = convert_df(dict_resposta)
                                                                                                                             

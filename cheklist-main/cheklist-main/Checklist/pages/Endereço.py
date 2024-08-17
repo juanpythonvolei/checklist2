@@ -10,7 +10,7 @@ time.sleep(0.2)
 msg1 = st.toast('Seja Bem vindo a aba de endereços')
 time.sleep(1)
 msg2= st.toast('Aqui, Você pode ser direcionado para os apps de checklists ou Gerenciamento logístico')
-url = 'https://appchecklistthule.streamlit.app/?embed_options=dark_theme'
+url = 'https://appchecklistthulee.streamlit.app/?embed_options=dark_theme'
 
 
 qr = qrcode.QRCode(

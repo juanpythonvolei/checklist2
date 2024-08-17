@@ -862,7 +862,6 @@ if seletor == 'Novo Checklist':
                                                             st.session_state.lista_imagens.extend([''] * (max_length - len(st.session_state.lista_problemas)))
                                                             dict_resposta = {'Item ok': st.session_state.lista_qtd, 'Item Anormal': st.session_state.lista_problemas}
                                                             pdf_buffer = criar_pdf_em_memoria(dict_resposta)
-                                                            df = pd.DataFrame(dict_resposta)
                                                             
                                                             
                                                             
@@ -889,7 +888,8 @@ if seletor == 'Novo Checklist':
                                                                                                             writer.save()
                                                                                                             processed_data = output.getvalue()
                                                                                                             return processed_data
-                                                                                                    with st.popover("📂"):                 
+                                                                                                    with st.popover("📂"):      
+                                                                                                                                df = pd.DataFrame(dict_resposta)
                                                                                                                                 arquivo_excel = convert_df_to_excel(df)
                                                                                                                                 
                                                                                                                                 download = st.download_button(

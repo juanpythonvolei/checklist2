@@ -883,12 +883,12 @@ if seletor == 'Novo Checklist':
                                                                                         with col2:
                                                                                                     @st.cache_data
                                                                                                     def convert_df_to_excel(df):
-                                                                                                        output = BytesIO()
-                                                                                                        writer = pd.ExcelWriter(output, engine='openpyxl')
-                                                                                                        df.to_excel(writer, index=False, sheet_name='Sheet1')
-                                                                                                        writer.save()
-                                                                                                        processed_data = output.getvalue()
-                                                                                                        return processed_data
+                                                                                                            output = BytesIO()
+                                                                                                            writer = pd.ExcelWriter(output, engine='openpyxl')
+                                                                                                            df.to_excel(writer, index=False, sheet_name='Sheet1')
+                                                                                                            writer.save()
+                                                                                                            processed_data = output.getvalue()
+                                                                                                            return processed_data
                                                                                                     with st.popover("📂"):                 
                                                                                                                                 arquivo_excel = convert_df_to_excel(df)
                                                                                                                                 

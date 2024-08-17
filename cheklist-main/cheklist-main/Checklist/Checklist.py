@@ -867,39 +867,40 @@ if seletor == 'Novo Checklist':
                                                             
                                                             col1,col2,col3 = st.columns(3)
                                                             with col1:
-                                                                        botao_email = st.button('Enviar Cheklist')
-                                                                        if botao_email:
-                                                                                        enviar_email(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)       
-                                                                                        #enviar_emaail2(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)        
-                                                                                        estatistica(nao=st.session_state.lista_problemas,sim=st.session_state.lista_qtd,usuario=usuario,data=data_hora_formatada,imagem=st.session_state.lista_imagens)        
-                                                                                        st.session_state.lista_qtd = []
-                                                                                        st.session_state.lista_problemas = []
-                                                                                        st.session_state.lista_imagens = []        
-                                                                                        st.session_state.mostrar_reclamacao = False
-                                                                                        reset_checkboxes()
-                                                                                        st.success('Relatório Enviado')
-                                                                                        baixar()
-                                                                                        with col2:
-                                                                                                    @st.cache_data
-                                                                                                    def convert_df_to_excel(df):
-                                                                                                            
-                                                                                                            output = BytesIO() 
-                                                                                                            df.to_excel('Checklist.xlsx', index=False, sheet_name='Sheet1')
-                                                                                                            processed_data = output.getvalue()
-                                                                                                            return processed_data  
-                                                                                                           
-                                                                                                    with st.popover("📂"):      
-                                                                                                                                df = pd.DataFrame(dict_resposta)
-                                                                                                                                arquivo_excel = convert_df_to_excel(df)
-                                                                                                                                
-                                                                                                                                download = st.download_button(
-                                                                                                                                label="Faça o download do checklist no formato Excel",
-                                                                                                                                data=arquivo_excel,
-                                                                                                                                file_name="checklist.xlsx",
-                                                                                                                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                                                                                    )
-                                                                                                                                if download:
-                                                                                                                                        st.success('Arquivo csv baixado com sucesso')
+                                                                        if '' not in st.session_state.lista_qtd and st.session_state.lista_problemas:
+                                                                          botao_email = st.button('Enviar Cheklist')
+                                                                          if botao_email:
+                                                                                          enviar_email(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)       
+                                                                                          #enviar_emaail2(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)        
+                                                                                          estatistica(nao=st.session_state.lista_problemas,sim=st.session_state.lista_qtd,usuario=usuario,data=data_hora_formatada,imagem=st.session_state.lista_imagens)        
+                                                                                          st.session_state.lista_qtd = []
+                                                                                          st.session_state.lista_problemas = []
+                                                                                          st.session_state.lista_imagens = []        
+                                                                                          st.session_state.mostrar_reclamacao = False
+                                                                                          reset_checkboxes()
+                                                                                          st.success('Relatório Enviado')
+                                                                                          baixar()
+                                                                                          with col2:
+                                                                                                      @st.cache_data
+                                                                                                      def convert_df_to_excel(df):
+                                                                                                              
+                                                                                                              output = BytesIO() 
+                                                                                                              df.to_excel('Checklist.xlsx', index=False, sheet_name='Sheet1')
+                                                                                                              processed_data = output.getvalue()
+                                                                                                              return processed_data  
+                                                                                                             
+                                                                                                      with st.popover("📂"):      
+                                                                                                                                  df = pd.DataFrame(dict_resposta)
+                                                                                                                                  arquivo_excel = convert_df_to_excel(df)
+                                                                                                                                  
+                                                                                                                                  download = st.download_button(
+                                                                                                                                  label="Faça o download do checklist no formato Excel",
+                                                                                                                                  data=arquivo_excel,
+                                                                                                                                  file_name="checklist.xlsx",
+                                                                                                                                  mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                                                      )
+                                                                                                                                  if download:
+                                                                                                                                          st.success('Arquivo csv baixado com sucesso')
                                                                             
 
 elif seletor == 'Excluir Checklist':

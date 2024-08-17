@@ -29,7 +29,7 @@ img_qrcode = qr.make_image(fill_color="black", back_color="white")
 with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
     img_qrcode.save(tmpfile.name)
     tmpfile_path = tmpfile.name
-url2 = 'https://appoficialgerenciamentologistico.streamlit.app/?embed_options=dark_theme'
+url2 = 'https://gerenciamentologisticoapp.streamlit.app/?embed_options=dark_theme'
 
 # Cria o QR code
 qr2 = qrcode.QRCode(

@@ -893,10 +893,10 @@ if seletor == 'Novo Checklist':
                                                                                                                             arquivo = convert_df(dict_resposta)
                                                                                                                             
                                                                                                                             download = st.download_button(
-                                                                                                                                label="Faça o download do checklist no formato csv",
+                                                                                                                                label="Faça o download do checklist no formato Excel",
                                                                                                                                 data=arquivo,
-                                                                                                                                file_name="checklist.csv",
-                                                                                                                                mime="text/csv",
+                                                                                                                                file_name="checklist.xlsx",
+                                                                                                                                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                                                                                                                                                     )
                                                                                                                             if download:
                                                                                                                                         st.success('Arquivo csv baixado com sucesso')

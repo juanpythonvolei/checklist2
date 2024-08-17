@@ -885,7 +885,7 @@ if seletor == 'Novo Checklist':
                                                                                                     def convert_df(df):    
                                                                                                       output = BytesIO()
                                                                                                       #writer = pd.ExcelWriter(output, engine='openpyxl')
-                                                                                                      arquivo = df.to_excel(writer, index=False, sheet_name='Sheet1')
+                                                                                                      arquivo = df.to_excel( index=False, sheet_name='Sheet1')
                                                                                                       arquivo.save()
                                                                                                       processed_data = output.getvalue()
                                                                                                       return processed_data

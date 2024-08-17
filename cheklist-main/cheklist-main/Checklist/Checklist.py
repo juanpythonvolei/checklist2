@@ -882,12 +882,11 @@ if seletor == 'Novo Checklist':
                                                                                         with col2:
                                                                                                     @st.cache_data
                                                                                                     def convert_df_to_excel(df):
-                                                                                                            output = BytesIO()
+                                                                                                            
                                                                                                            
                                                                                                             df.to_excel('Checklist.xlsx', index=False, sheet_name='Sheet1')
                                                                           
-                                                                                                            processed_data = output.getvalue()
-                                                                                                            return processed_data
+                                                                                                           
                                                                                                     with st.popover("📂"):      
                                                                                                                                 df = pd.DataFrame(dict_resposta)
                                                                                                                                 arquivo_excel = convert_df_to_excel(df)

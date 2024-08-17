@@ -867,7 +867,7 @@ if seletor == 'Novo Checklist':
                                                             
                                                             col1,col2,col3 = st.columns(3)
                                                             with col1:
-                                                                        if len(st.session_state.lista_qtd) = 20 and len(st.session_state.lista_problemas)= 20:
+                                                                        if len(st.session_state.lista_qtd) == 20 and len(st.session_state.lista_problemas)== 20:
                                                                           botao_email = st.button('Enviar Cheklist')
                                                                           if botao_email:
                                                                                           enviar_email(dados=dict_resposta,usuario=usuario,pdf_buffer=pdf_buffer,lista = st.session_state.lista_imagens)       

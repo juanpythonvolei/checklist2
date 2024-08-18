@@ -29,7 +29,9 @@ def escolha2(dict_excel):
                                                                                                                                                       )
                                                                                                                                   if download:
                                                                                                                                           st.success('Arquivo excel baixado com sucesso')
-                                                            else:
+                                                            elif adm=='':
+                                                              st.info('Insira a senha')
+                                                            elif adm != '' and adm != str(2314):
                                                                 st.error(f'Senha incorreta')
 
 
@@ -912,6 +914,7 @@ if seletor == 'Novo Checklist':
                                                                                           reset_checkboxes()
                                                                                           st.success('Relatório Enviado')
                                                                                           baixar()
+                                                                                          escolha2(dict_excel)
                                                                                           with col2:
                                                                                                     
                                                                                                       @st.cache_data
@@ -922,8 +925,8 @@ if seletor == 'Novo Checklist':
                                                                                                                               processed_data = output.getvalue()
                                                                                                                               return processed_data  
                                                                                                             
-                                                                                                      if st.popover("📂") :     
-                                                                                                                                  escolha2(dict_excel)
+                                                                                                           
+                                                                                                                                  
                                                                         else:
                                                                           st.info(f'{usuario}, preencha todos os campos para enviar o relatório')
 

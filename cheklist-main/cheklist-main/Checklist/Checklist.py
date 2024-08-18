@@ -869,7 +869,7 @@ if seletor == 'Novo Checklist':
                                                             for item in st.session_state.lista_qtd:
                                                               if '...' in item:
                                                                 item = 'nulo'
-                                                            for item in st.session_state.lista_problema:
+                                                            for item in st.session_state.lista_problemas:
                                                               if '...' in item:
                                                                 item = 'nulo'
                                                             dict_excel= {'Item ok': st.session_state.lista_qtd, 'Item Anormal': st.session_state.lista_problemas}

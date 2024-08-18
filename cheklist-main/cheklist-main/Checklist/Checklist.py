@@ -17,7 +17,7 @@ import time
 def escolha2(dict_excel):    
                                                             
                                                             adm = st.text_input(label='',placeholder='Insira a senha do administrador, para realizar o download do checklist')
-                                                            if adm:
+                                                            if adm == 2314:
                                                                                                                                   df = pd.DataFrame(dict_excel)
                                                                                                                                   arquivo_excel = convert_df_to_excel(df)
                                                                                                                                   
@@ -30,7 +30,7 @@ def escolha2(dict_excel):
                                                                                                                                   if download:
                                                                                                                                           st.success('Arquivo excel baixado com sucesso')
                                                             else:
-                                                                st.info(f'Até o momento, o administrador opta por não baixar o checklist')
+                                                                st.error(f'Senha incorreta')
 
 
 
@@ -922,7 +922,7 @@ if seletor == 'Novo Checklist':
                                                                                                                               processed_data = output.getvalue()
                                                                                                                               return processed_data  
                                                                                                              
-                                                                                                      with st.popover("📂"):      
+                                                                                                     if st.popover("📂"):      
                                                                                                                                   escolha2(dict_excel)
                                                                         else:
                                                                           st.info(f'{usuario}, preencha todos os campos para enviar o relatório')

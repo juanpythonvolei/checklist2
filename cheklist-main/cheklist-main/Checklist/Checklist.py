@@ -860,9 +860,19 @@ if seletor == 'Novo Checklist':
                                                             st.session_state.lista_qtd.extend([''] * (max_length - len(st.session_state.lista_qtd)))
                                                             st.session_state.lista_problemas.extend([''] * (max_length - len(st.session_state.lista_problemas)))
                                                             st.session_state.lista_imagens.extend([''] * (max_length - len(st.session_state.lista_problemas)))
+                                                            lista_excel_sim = []
+                                                            lista_excel_nao= []
+                                                            
+                                                                
                                                             dict_resposta = {'Item ok': st.session_state.lista_qtd, 'Item Anormal': st.session_state.lista_problemas}
                                                             pdf_buffer = criar_pdf_em_memoria(dict_resposta)
-                                                            
+                                                            for item in st.session_state.lista_qtd:
+                                                              if '...' in item:
+                                                                item = 'nulo'
+                                                            for item in st.session_state.lista_problema:
+                                                              if '...' in item:
+                                                                item = 'nulo'
+                                                            dict_excel= {'Item ok': st.session_state.lista_qtd, 'Item Anormal': st.session_state.lista_problemas}
                                                             
                                                             
                                                             col1,col2,col3 = st.columns(3)
@@ -890,7 +900,7 @@ if seletor == 'Novo Checklist':
                                                                                                               return processed_data  
                                                                                                              
                                                                                                       with st.popover("📂"):      
-                                                                                                                                  df = pd.DataFrame(dict_resposta)
+                                                                                                                                  df = pd.DataFrame(dict_excel)
                                                                                                                                   arquivo_excel = convert_df_to_excel(df)
                                                                                                                                   
                                                                                                                                   download = st.download_button(

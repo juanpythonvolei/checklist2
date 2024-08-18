@@ -892,8 +892,8 @@ if seletor == 'Novo Checklist':
                                                                                           baixar()
                                                                                           with col2:
                                                                                                     
-                                                                                                              @st.cache_data
-                                                                                                              def convert_df_to_excel(df):
+                                                                                                      @st.cache_data
+                                                                                                      def convert_df_to_excel(df):
                                                                                                                               output = BytesIO()
                                                                                                                               with pd.ExcelWriter(output, engine='openpyxl') as writer:
                                                                                                                                   df.to_excel(writer, index=False, sheet_name='Sheet1')

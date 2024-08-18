@@ -921,8 +921,8 @@ if seletor == 'Novo Checklist':
                                                                                                                                   df.to_excel(writer, index=False, sheet_name='Sheet1')
                                                                                                                               processed_data = output.getvalue()
                                                                                                                               return processed_data  
-                                                                                                     botao = st.popover("📂")        
-                                                                                                     with botao:      
+                                                                                                            
+                                                                                                      if st.popover("📂") :     
                                                                                                                                   escolha2(dict_excel)
                                                                         else:
                                                                           st.info(f'{usuario}, preencha todos os campos para enviar o relatório')

@@ -13,6 +13,28 @@ from streamlit_option_menu import option_menu
 import firebase_admin
 from firebase_admin import credentials, firestore,db
 import time
+@st.dialog(f"Atenção")             
+def escolha2(dict_excel):    
+                                                            
+                                                            adm = st.text_input(placeholder='Insira a senha do administrador, para realizar o download do checklist')
+                                                            if adm:
+                                                                                                                                  df = pd.DataFrame(dict_excel)
+                                                                                                                                  arquivo_excel = convert_df_to_excel(df)
+                                                                                                                                  
+                                                                                                                                  download = st.download_button(
+                                                                                                                                  label="Faça o download do checklist no formato Excel",
+                                                                                                                                  data=arquivo_excel,
+                                                                                                                                  file_name="checklist.xlsx",
+                                                                                                                                  mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                                                      )
+                                                                                                                                  if download:
+                                                                                                                                          st.success('Arquivo excel baixado com sucesso')
+                                                            else:
+                                                                st.info(f'Até o momento, o administrador opta por não baixar o checklist')
+
+
+
+
 
 @st.dialog(f"Deseja realmente excluir o Checklist? ")             
 def escolha(data):    
@@ -901,17 +923,7 @@ if seletor == 'Novo Checklist':
                                                                                                                               return processed_data  
                                                                                                              
                                                                                                       with st.popover("📂"):      
-                                                                                                                                  df = pd.DataFrame(dict_excel)
-                                                                                                                                  arquivo_excel = convert_df_to_excel(df)
-                                                                                                                                  
-                                                                                                                                  download = st.download_button(
-                                                                                                                                  label="Faça o download do checklist no formato Excel",
-                                                                                                                                  data=arquivo_excel,
-                                                                                                                                  file_name="checklist.xlsx",
-                                                                                                                                  mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                                                                                      )
-                                                                                                                                  if download:
-                                                                                                                                          st.success('Arquivo csv baixado com sucesso')
+                                                                                                                                  escolha2(dict_excel)
                                                                         else:
                                                                           st.info(f'{usuario}, preencha todos os campos para enviar o relatório')
 

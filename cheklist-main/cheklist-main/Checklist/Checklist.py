@@ -922,7 +922,7 @@ if seletor == 'Novo Checklist':
                                                                                                                               processed_data = output.getvalue()
                                                                                                                               return processed_data  
                                                                                                      botao = st.popover("📂")        
-                                                                                                     if botao:      
+                                                                                                     with botao:      
                                                                                                                                   escolha2(dict_excel)
                                                                         else:
                                                                           st.info(f'{usuario}, preencha todos os campos para enviar o relatório')

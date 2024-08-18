@@ -16,7 +16,7 @@ import time
 @st.dialog(f"Atenção")             
 def escolha2(dict_excel):    
                                                             
-                                                            adm = st.text_input(placeholder='Insira a senha do administrador, para realizar o download do checklist')
+                                                            adm = st.text_input(label='',placeholder='Insira a senha do administrador, para realizar o download do checklist')
                                                             if adm:
                                                                                                                                   df = pd.DataFrame(dict_excel)
                                                                                                                                   arquivo_excel = convert_df_to_excel(df)

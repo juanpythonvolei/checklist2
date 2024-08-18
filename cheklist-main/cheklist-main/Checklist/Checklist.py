@@ -13,11 +13,11 @@ from streamlit_option_menu import option_menu
 import firebase_admin
 from firebase_admin import credentials, firestore,db
 import time
-@st.dialog(f"Atenção")             
+@st.dialog(f"Envio concluído. Baixe o cheklist aqui")             
 def escolha2(dict_excel):    
                                                             
-                                                            adm = st.text_input(label='',placeholder='Insira a senha do administrador, para realizar o download do checklist')
-                                                            if adm == 2314:
+                                                            adm = st.text_input(label='',placeholder='Insira a senha do administrador',type='password')
+                                                            if adm == str(2314):
                                                                                                                                   df = pd.DataFrame(dict_excel)
                                                                                                                                   arquivo_excel = convert_df_to_excel(df)
                                                                                                                                   

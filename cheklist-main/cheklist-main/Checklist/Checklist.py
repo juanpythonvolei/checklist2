@@ -891,13 +891,14 @@ if seletor == 'Novo Checklist':
                                                                                           st.success('Relatório Enviado')
                                                                                           baixar()
                                                                                           with col2:
-                                                                                                      @st.cache_data
-                                                                                                      def convert_df_to_excel(df):
-                                                                                                              
-                                                                                                              output = BytesIO() 
-                                                                                                              df.to_excel('Checklist.xlsx', index=False, sheet_name='Sheet1')
-                                                                                                              processed_data = output.getvalue()
-                                                                                                              return processed_data  
+                                                                                                    
+                                                                                                              @st.cache_data
+                                                                                                              def convert_df_to_excel(df):
+                                                                                                                              output = BytesIO()
+                                                                                                                              with pd.ExcelWriter(output, engine='openpyxl') as writer:
+                                                                                                                                  df.to_excel(writer, index=False, sheet_name='Sheet1')
+                                                                                                                              processed_data = output.getvalue()
+                                                                                                                              return processed_data  
                                                                                                              
                                                                                                       with st.popover("📂"):      
                                                                                                                                   df = pd.DataFrame(dict_excel)
